@@ -9,6 +9,8 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\ResultsController;
+use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\ProfileController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,12 +30,13 @@ Route::get('/', function(){
 });
 
 Route::resource('results', ResultsController::class);
-Route::get('/results/search/{code}', [ResultsController::class, 'search']);
 
 Route::resource('semesters', SemesterController::class);
 Route::get('/semesters/search/{code}', [SemesterController::class, 'search']);
 
-Route::resource('instructors', StudentController::class);
+Route::resource('instructors', InstructorController::class);
+
+Route::resource('profiles', ProfileController::class);
 
 Route::resource('students', StudentController::class);
 Route::get('/students/search/{registration_id}', [StudentController::class, 'search']);
