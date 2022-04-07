@@ -17,7 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->id();
             $table->foreignId('school_id')->references('id')->on('schools')->onDelete('cascade');
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->text('description')->nullable()->default('');
             $table->timestamps();
         });
     }

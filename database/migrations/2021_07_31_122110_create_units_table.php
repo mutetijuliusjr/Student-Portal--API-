@@ -15,15 +15,10 @@ class CreateUnitsTable extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->text('description')->nullable()->default('');
             $table->timestamps();
         });
-		
-		Schema::table('units', function (Blueprint $table){
-			$table->unsignedBigInteger('instructor_id')->nullable()->change();
-		});
     }
 
     /**
