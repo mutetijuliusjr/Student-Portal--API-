@@ -21,6 +21,6 @@ class Profile extends Model
 
 	public function user()
     {
-        return $this->belongsToOne('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 }

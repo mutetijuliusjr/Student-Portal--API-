@@ -14,7 +14,24 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $users = User::all();
+        # User Profiles
+        foreach ($users as $user) {
+            $user->profile;
+        }
+        # User Roles
+        foreach ($users as $user) {
+            $user->roles;
+        }
+        # Student Users
+        foreach ($users as $user) {
+            $user->student;
+        }
+        # Teacher Users
+        foreach ($users as $user) {
+            $user->instructor;
+        }
+        return $users;
     }
 
     /**
@@ -38,7 +55,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return User::find($user);
+        $student = $user->student;
+        $instructor = $user->instructor;
+        $roles = $user->roles;
+        $profile = $user->profile;
+        return compact('user');
     }
 
     /**

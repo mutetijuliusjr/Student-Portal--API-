@@ -30,6 +30,6 @@ class Semester extends Model
 	}
 	
 	public function units(){
-		return $this->belongsToMany('App\Models\Unit');
+		return $this->belongsToMany(Unit::Class);
 	}
 }

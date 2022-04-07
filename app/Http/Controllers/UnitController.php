@@ -14,7 +14,27 @@ class UnitController extends Controller
      */
     public function index()
     {
-        return Unit::all();
+        $units = Unit::all();
+
+        foreach ($units as $unit) {
+            $teachers = $unit->instructors;
+            $semesters = $unit->semesters;
+            $results = $unit->results;
+            
+            foreach ($teachers as $teachers) {
+                $teachers->user->profile;
+            }
+            
+            foreach ($semesters as $semester) {
+                $semester->course;
+            }
+            
+            foreach ($results as $result) {
+                $result->student;
+            }
+        }
+
+        return $units;
     }
 
     /**
@@ -38,7 +58,22 @@ class UnitController extends Controller
      */
     public function show(Unit $unit)
     {
-        return Unit::find($unit);
+        $teachers = $unit->instructors;
+        $semesters = $unit->semesters;
+        $results = $results = $unit->results;
+        
+        foreach ($teachers as $teachers) {
+            $teachers->user->profile;
+        }
+        
+        foreach ($semesters as $semester) {
+            $semester->course;
+        }
+        
+        foreach ($results as $result) {
+            $result->student;
+        }
+        return $unit;
     }
 
     /**

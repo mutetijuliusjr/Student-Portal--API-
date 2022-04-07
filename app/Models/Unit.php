@@ -10,21 +10,19 @@ class Unit extends Model
     use HasFactory;
 	
 	protected $fillable = [
-		'instructor_id',
 		'name',
-		'description',
-		'instructor_id'
+		'description'
 	];
 	
 	public function semesters(){
-		return $this->hasMany('App\Models\Semester');
+		return $this->belongsToMany(Semester::Class);
 	}
 	
-	public function instructor(){
-		return $this->belongsTo('App\Models\Instructor');
+	public function instructors(){
+		return $this->belongsToMany(Instructor::Class)->using(Instructor_Unit::Class);
 	}
 	
 	public function results(){
-		return $this->hasMany('App\Models\Results');
+		return $this->hasMany(Results::Class);
 	}
 }

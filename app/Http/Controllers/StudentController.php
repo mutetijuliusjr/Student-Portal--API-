@@ -14,7 +14,16 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return Student::all();
+        $students = Student::all();
+
+        foreach ($students as $student) {
+            $student->course;
+            $user_info = $student->user;
+            $profile = $student->user->profile;
+            $results = $student->results;
+        }
+
+        return $students;
     }
 
     /**

@@ -14,7 +14,13 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        return Instructor::all();
+        $instructors = Instructor::all();
+        foreach ($instructors as $instructor) {
+            $instructor->units;
+            $user = $instructor->user;
+            $user->profile;
+        }
+        return $instructors;
     }
 
     /**

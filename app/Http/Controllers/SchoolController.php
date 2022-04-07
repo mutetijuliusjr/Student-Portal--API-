@@ -14,7 +14,13 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        return School::all();
+        $schools = School::all();
+
+        foreach ($schools as $school) {
+            $school->departments;
+        }
+
+        return $schools;
     }
 
     /**
@@ -38,8 +44,12 @@ class SchoolController extends Controller
      */
     public function show(School $school)
     {
-        //dump(School::find($school)->departments()->name);
-        return School::find($school);
+        $school->departments;
+        $departments = $school->departments;
+        foreach ($departments as $department) {
+            $department->courses;
+        }
+        return $school;
     }
 
     /**

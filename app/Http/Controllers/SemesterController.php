@@ -15,7 +15,14 @@ class SemesterController extends Controller
      */
     public function index()
     {
-        return Semester::all();
+        $semesters = Semester::all();
+        
+        foreach ($semesters as $semester) {
+            $semester->units;
+            $semester->course;
+        }
+
+        return $semesters;
     }
 
     /**
@@ -37,10 +44,9 @@ class SemesterController extends Controller
      */
     public function show(Semester $semester)
     {
-        //$sem = Semester::find($semester);
-        //$units = $sem->units();
-        //dump($sem);
-        return Semester::find($semester);
+        $units = $semester->units;
+        $course = $semester->course;
+        return compact('semester');
     }
 
     /**

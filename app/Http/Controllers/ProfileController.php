@@ -14,7 +14,12 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return Profile::all();
+        $profiles = Profile::all();
+        foreach ($profiles as $profile) {
+            $user = $profile->user;
+            $user->roles;
+        }
+        return $profiles;
     }
 
     /**

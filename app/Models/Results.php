@@ -23,10 +23,10 @@ class Results extends Model
 	];
 	
 	public function unit(){
-		return $this->belongsTo('App\Models\Unit');
+		return $this->belongsTo(Unit::Class);
 	}
 	
 	public function student(){
-		return $this->belongsTo('App\Models\Student');
+		return $this->belongsTo(Student::Class);
 	}
 }

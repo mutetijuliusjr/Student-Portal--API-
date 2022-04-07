@@ -42,18 +42,18 @@ class User extends Authenticatable
     ];
 	
 	public function student(){
-		return $this->hasMany('App\Models\Student');
+		return $this->hasOne('App\Models\Student');
 	}
 	
 	public function instructor(){
-		return $this->hasMany('App\Models\Instructor');
+		return $this->hasOne('App\Models\Instructor');
 	}
 	
 	public function profile(){
-		return $this->hasMany('App\Models\Profile');
+		return $this->hasOne('App\Models\Profile');
 	}
 	
 	public function roles(){
-		return $this->hasMany('App\Models\Role');
+		return $this->belongsToMany(Role::Class);
 	}
 }

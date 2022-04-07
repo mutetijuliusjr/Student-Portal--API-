@@ -12,10 +12,10 @@ class Instructor extends Model
 	protected $fillable = ['user_id'];
 	
 	public function user(){
-		return $this->belongsTo('App\Models\User');
+		return $this->belongsTo(User::Class);
 	}
 	
 	public function units(){
-		return $this->hasMany('App\Models\Unit');
+		return $this->belongsToMany(Unit::Class)->using(Instructor_Unit::Class);
 	}
 }

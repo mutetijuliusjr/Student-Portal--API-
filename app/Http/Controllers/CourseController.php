@@ -14,7 +14,12 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return Course::all();
+        $courses = Course::all();
+        foreach ($courses as $course) {
+            $course->department;
+            $course->semesters;
+        }
+        return $courses;
     }
 
     /**
@@ -38,7 +43,12 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return Course::find($course);
+        $course->department;
+        $semesters = $course->semesters;
+        foreach ($semesters as $semester) {
+            $semester->units;
+        }
+        return $course;
     }
 
     /**

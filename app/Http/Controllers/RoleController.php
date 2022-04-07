@@ -14,7 +14,16 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return Role::all();
+        $roles = Role::all();
+        foreach ($roles as $role) {
+            $users = $role->users;
+            
+            foreach ($users as $user) {
+                $user->profile;
+            }
+        }
+
+        return $roles;
     }
 
     /**
@@ -38,7 +47,8 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        return Role::find($role);
+        $users = $role->users;
+        return compact('role','users');
     }
 
     /**

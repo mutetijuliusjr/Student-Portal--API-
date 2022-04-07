@@ -14,7 +14,13 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return Department::all();
+        $departments = Department::all();
+        foreach ($departments as $department) {
+            $department->school;
+            $department->courses;
+        }
+        
+        return $departments;
     }
 
     /**
@@ -38,7 +44,13 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        return Department::find($department);
+        $department->school;
+        $courses = $department->courses;
+        foreach ($courses as $course) {
+            $course->semesters;
+        }
+        
+        return $department;
     }
 
     /**

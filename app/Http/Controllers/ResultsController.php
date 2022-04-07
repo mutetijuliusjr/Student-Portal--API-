@@ -14,7 +14,16 @@ class ResultsController extends Controller
      */
     public function index()
     {
-        return Results::all();
+        $results = Results::all();
+        foreach ($results as $result) {
+            $student = $result->student;
+            $student->course;
+            $unit = $result->unit;
+            $teacher = $unit->instructor->user;
+            $teacher_profile = $teacher->profile;
+        }
+        
+        return $results; 
     }
 
     /**
