@@ -16,14 +16,14 @@ class Student extends Model
 	];
 	
 	public function user(){
-		return $this->belongsTo('App\Models\User');
+		return $this->belongsTo(User::Class);
 	}
 	
 	public function course(){
-		return $this->belongsTo('App\Models\Course');
+		return $this->belongsToMany(Course::Class);
 	}
 	
 	public function results(){
-		return $this->hasMany('App\Models\Results');
+		return $this->hasMany(Results::Class);
 	}
 }

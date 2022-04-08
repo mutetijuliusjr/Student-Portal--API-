@@ -42,15 +42,15 @@ class User extends Authenticatable
     ];
 	
 	public function student(){
-		return $this->hasOne('App\Models\Student');
+		return $this->hasOne(Student::Class);
 	}
 	
 	public function instructor(){
-		return $this->hasOne('App\Models\Instructor');
+		return $this->hasOne(Instructor::Class);
 	}
 	
 	public function profile(){
-		return $this->hasOne('App\Models\Profile');
+		return $this->hasOne(Profile::Class);
 	}
 	
 	public function roles(){

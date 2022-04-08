@@ -25,12 +25,14 @@ class UserController extends Controller
         }
         # Student Users
         foreach ($users as $user) {
-            $user->student;
+            $student = $user->student;
+            $student->course;
         }
         # Teacher Users
         foreach ($users as $user) {
             $user->instructor;
         }
+        
         return $users;
     }
 

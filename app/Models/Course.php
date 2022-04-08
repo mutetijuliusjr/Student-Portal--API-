@@ -17,16 +17,16 @@ class Course extends Model
 	 
 	 public function department()
     {
-        return $this->belongsTo('App\Models\Department');
+        return $this->belongsTo(Department::Class);
     }
 	
 	 public function students()
     {
-        return $this->hasMany('App\Models\Student');
+        return $this->belongsToMany(Student::Class);
     }
 	
 	 public function semesters()
     {
-        return $this->hasMany('App\Models\Semester');
+        return $this->hasMany(Semester::Class);
     }
 }
