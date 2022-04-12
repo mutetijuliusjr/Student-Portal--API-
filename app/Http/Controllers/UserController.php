@@ -15,24 +15,14 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        # User Profiles
+        
         foreach ($users as $user) {
             $user->profile;
-        }
-        # User Roles
-        foreach ($users as $user) {
             $user->roles;
-        }
-        # Student Users
-        foreach ($users as $user) {
-            $student = $user->student;
-            $student->course;
-        }
-        # Teacher Users
-        foreach ($users as $user) {
+            $user->student;
             $user->instructor;
         }
-        
+                
         return $users;
     }
 
@@ -44,7 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['name' => 'required']);
+        $request->validate(['username' => 'required']);
 		
 		return User::create($request->all());
     }
@@ -57,11 +47,12 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $student = $user->student;
+        $student = $user->student->courses;
         $instructor = $user->instructor;
         $roles = $user->roles;
         $profile = $user->profile;
-        return compact('user');
+        //$student->courses;
+        return $user;
     }
 
     /**

@@ -17,7 +17,7 @@ class StudentController extends Controller
         $students = Student::all();
 
         foreach ($students as $student) {
-            $student->course;
+            $student->courses;
             $user_info = $student->user;
             $profile = $student->user->profile;
             $results = $student->results;
@@ -47,7 +47,10 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return Student::find($student);
+        $student->courses;
+        $student->user->profile;
+        $student->results;
+        return $student;
     }
 
     /**
